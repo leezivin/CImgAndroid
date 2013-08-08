@@ -1,9 +1,22 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
+LOCAL_MODULE:= libjpeg
+LOCAL_SRC_FILES := libjpeg.a
+include $(PREBUILT_STATIC_LIBRARY)
 
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/hello
-LOCAL_MODULE    := myjni
-LOCAL_SRC_FILES := HelloWorld.cpp
+include $(CLEAR_VARS)
+LOCAL_MODULE:= libpng
+LOCAL_SRC_FILES := libpng.a
+include $(PREBUILT_STATIC_LIBRARY)
+
+LOCAL_MODULE    :=  libcimg
+LOCAL_SRC_FILES := ImageProcessing.cpp
+
+LOCAL_C_INCLUDES := $(LOCAL_PATH)
+LOCAL_LDLIBS := -llog -lz
+LOCAL_STATIC_LIBRARIES := libpng libjpeg
+
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/libpng/ $(LOCAL_PATH)/jpeglib/
 
 include $(BUILD_SHARED_LIBRARY)
