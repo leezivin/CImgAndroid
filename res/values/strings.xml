@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">CImgAndroid</string>
     <string name="hello_world">Test world</string>
+    <string name="choose_buttom_text">Choose image</string>
 </resources>
