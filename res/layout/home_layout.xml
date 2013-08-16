@@ -4,15 +4,11 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
-    <Button android:id="@+id/choose_image_button"
+    <Button android:id="@+id/draw_primitives_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/choose_buttom_text"/>
-
-    <ImageView android:id="@+id/image"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"/>
+            android:text="@string/draw_primitives"/>
 
 </LinearLayout>
 
