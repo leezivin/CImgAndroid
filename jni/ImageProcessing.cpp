@@ -63,6 +63,31 @@ void generatePrimitives(const std::string& resultName){
 	image.clear();
 }
 
+void changeColorBalance(
+	const std::string& sourceName,
+	const std::string& resultName,
+	float r,
+	float g,
+	float b
+){
+	CImg<unsigned char> image;
+	image.load(sourceName.c_str());
+	float rgb[] = {r, g, b};
+
+	cimg_forXY(image,x,y){
+		for(char channel = 0; channel < 3; channel++){
+			if (image(x, y, channel)*rgb[channel] > 255){
+				image(x, y, channel) = 255;
+			} else {
+				image(x, y, channel) *= rgb[channel];
+			}
+		}
+	}
+
+	image.save(resultName.c_str());
+	image.clear();
+}
+
 #ifndef _Included_by_idev_jni_NativeUtils
 #define _Included_by_idev_jni_NativeUtils
 #ifdef __cplusplus
@@ -83,6 +108,26 @@ JNIEXPORT void JNICALL Java_com_cimg_android_utils_NativeUtils_generatePrimitive
 ) {
     std::string resultPath = jStrToStr(env, jresultPath);
     generatePrimitives(resultPath);
+}
+
+JNIEXPORT void JNICALL Java_com_cimg_android_utils_NativeUtils_changeColorBalance(
+    JNIEnv *env,
+    jobject thisObj,
+	jstring jsourcePath,
+	jstring jresultPath,
+	jfloat jr,
+	jfloat jg,
+	jfloat jb
+) {
+    std::string sourcePath = jStrToStr(env, jsourcePath);
+    std::string resultPath = jStrToStr(env, jresultPath);
+    changeColorBalance(
+        sourcePath,
+        resultPath,
+        (float) jr,
+        (float) jg,
+        (float) jb
+    );
 }
 
 #ifdef __cplusplus

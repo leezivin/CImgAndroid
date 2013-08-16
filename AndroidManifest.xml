@@ -12,6 +12,7 @@
         </activity>
 
         <activity android:name=".activity.DrawPrimitivesActivity"/>
+        <activity android:name=".activity.ChangeColorBalanceActivity"/>
 
     </application>
 </manifest> 

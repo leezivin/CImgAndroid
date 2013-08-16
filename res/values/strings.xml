@@ -2,4 +2,6 @@
 <resources>
     <string name="app_name">CImgAndroid</string>
     <string name="draw_primitives">Draw Primitives</string>
+    <string name="change_color_balance_button">Change Color Balance</string>
+    <string name="choose_image_button">Choose Image</string>
 </resources>

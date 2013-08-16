@@ -91,7 +91,7 @@ void changeColorBalance(
 			} else {
 				image(x, y, channel) *= rgb[channel];
 			}				
-		}\
+		}
 	}
 	
 	image.save(resultName.c_str());

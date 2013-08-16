@@ -11,5 +11,15 @@ public class NativeUtils {
     private NativeUtils(){
     }
 
-    public static native void generatePrimitives(String resultPath);
+    public static native void generatePrimitives(
+        String resultPath
+    );
+
+    public static native void changeColorBalance(
+        String sourcePath,
+        String resultPath,
+        float r,
+        float g,
+        float b
+    );
 }
