@@ -11,6 +11,8 @@ public class NativeUtils {
     private NativeUtils(){
     }
 
+    public static native String getMessage();
+
     public static native void generatePrimitives(
         String resultPath
     );

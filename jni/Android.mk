@@ -14,7 +14,6 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := ImageProcessing
 LOCAL_SRC_FILES := ImageProcessing.cpp
 
-
 LOCAL_C_INCLUDES := $(LOCAL_PATH)
 LOCAL_LDLIBS := -llog -lz
 LOCAL_STATIC_LIBRARIES := libpng libjpeg

@@ -17,7 +17,7 @@ import com.cimg.android.utils.NativeUtils;
  */
 public class DrawPrimitivesActivity extends Activity {
 
-    private final static String PRIMITIVES_IMAGE = "primitives.jpg";
+    public final static String PRIMITIVES_IMAGE = "primitives.jpg";
     private String imagePath;
     private ProgressBar progressBar;
     private ImageView imageView;
