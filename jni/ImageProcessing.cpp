@@ -64,7 +64,7 @@ void generatePrimitives(const std::string& resultName){
     pointsPolygon(3,1) = (700 + 50); // Y3
 
 	image.draw_polygon(pointsPolygon, colorPolygon);
-	image.save(resultName.c_str());
+	image.get_channels(0,2).save(resultName.c_str());
 	image.clear();
 }
 
@@ -89,7 +89,7 @@ void changeColorBalance(
 			}
 		}
 	}
-	image.save(resultName.c_str());
+	image.get_channels(0,2).save(resultName.c_str());
 	image.clear();
 }
 
@@ -105,7 +105,7 @@ void processingBlocks(
 		image(x,y) = (Ipp + Icp + Inp + Ipc + Inc + Ipn + Icn + Inn) / 7;
 	}
 
-	image.save(resultName.c_str());
+	image.get_channels(0,2).save(resultName.c_str());
 	image.clear();
 }
 
