@@ -1,5 +1,13 @@
-CImg is C/C++ library for work with images. This example shows how compile and work with this library on android. CImg can use some external library. In example, we add libjpg and libpng.
+CImg is C/C++ library for work with images. 
+This example shows how compile and work with this library on android. 
+CImg can use some external library. In example, we add libjpg and libpng.
 
-P.S For build libjpg and libpng you can see:
+If you want build last versions libpng and libjpg you shoud see :
 http://stackoverflow.com/questions/12260149/libjpeg-turbo-for-android
 https://github.com/julienr/libpng-android
+
+Build example: 
+cd {$Project-dir}
+android update project -p .
+ndk-build
+ant debug
