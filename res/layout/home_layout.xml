@@ -20,5 +20,13 @@
             android:layout_marginLeft="10dp"
             android:text="@string/change_color_balance_button"/>
 
+    <Button android:id="@+id/block_filter_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="@string/block_filter_button"/>
+
 </LinearLayout>
 

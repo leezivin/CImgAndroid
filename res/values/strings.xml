@@ -4,4 +4,5 @@
     <string name="draw_primitives">Draw Primitives</string>
     <string name="change_color_balance_button">Change Color Balance</string>
     <string name="choose_image_button">Choose Image</string>
+    <string name="block_filter_button">Block filter</string>
 </resources>

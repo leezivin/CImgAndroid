@@ -5,7 +5,7 @@ package com.cimg.android.utils;
  */
 public class NativeUtils {
     static {
-        System.loadLibrary("ImageProcessing");
+        System.loadLibrary("imageprocessing");
     }
 
     private NativeUtils(){
@@ -24,4 +24,10 @@ public class NativeUtils {
         float g,
         float b
     );
+
+    public static native void processingBlocks(
+        String sourcePath,
+        String resultPath
+    );
+
 }

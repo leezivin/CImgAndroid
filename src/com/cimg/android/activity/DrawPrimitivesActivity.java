@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+
 import com.cimg.android.R;
 import com.cimg.android.utils.CacheUtils;
 import com.cimg.android.utils.NativeUtils;
@@ -51,7 +52,7 @@ public class DrawPrimitivesActivity extends Activity {
         progressBar = (ProgressBar) findViewById(R.id.progress_bar);
         imageView = (ImageView) findViewById(R.id.image);
         imagePath = CacheUtils.getCachePath(this) + PRIMITIVES_IMAGE;
-
+        Log.i("XXX","image:" + imagePath);
         drawPrimitivesTask.execute();
     }
 }

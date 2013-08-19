@@ -5,13 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+
 import com.cimg.android.R;
-import com.cimg.android.utils.NativeUtils;
 
 public class HomeActivity extends Activity {
     private Button drawPrimitivesButton;
     private Button changeColorBalanceButton;
+    private Button blockFilterButton;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +33,19 @@ public class HomeActivity extends Activity {
                 handlerChangeColorBalanceButton();
             }
         });
+
+        blockFilterButton = (Button) findViewById(R.id.block_filter_button);
+        blockFilterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                handlerBlockFilterButton();
+            }
+        });
+    }
+
+    private void handlerBlockFilterButton() {
+        Intent intent = new Intent(this, BlockFilterActivity.class);
+        startActivity(intent);
     }
 
     private void handlerChangeColorBalanceButton() {
@@ -40,11 +54,9 @@ public class HomeActivity extends Activity {
     }
 
     private void handlerDrawPrimitivesButton() {
-/*
         Intent intent = new Intent(this, DrawPrimitivesActivity.class);
         startActivity(intent);
-*/
-        Toast.makeText(this, NativeUtils.getMessage(),Toast.LENGTH_SHORT);
+
     }
 
 }

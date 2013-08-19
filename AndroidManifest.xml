@@ -21,6 +21,8 @@
 
         <activity android:name=".activity.DrawPrimitivesActivity"/>
         <activity android:name=".activity.ChangeColorBalanceActivity"/>
+        <activity android:name=".activity.BlockFilterActivity"/>
+
     </application>
 
 </manifest> 

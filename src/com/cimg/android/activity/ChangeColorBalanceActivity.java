@@ -7,15 +7,19 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.cimg.android.R;
 import com.cimg.android.utils.CacheUtils;
 import com.cimg.android.utils.NativeUtils;
-
-import java.io.File;
 
 /**
  * Created by seven on 8/17/13.
@@ -24,6 +28,7 @@ public class ChangeColorBalanceActivity extends Activity {
     private static final String SOURCE_BUNDLE = "SOURCE_BUNDLE";
     private static final int RESULT_LOAD_IMAGE = 1;
     private final static String RESULT_IMAGE = "change_color_balance.jpg";
+
     private String imageSourcePath;
     private String imageResultPath;
 
@@ -35,6 +40,8 @@ public class ChangeColorBalanceActivity extends Activity {
     private SeekBar redSeekBar;
     private SeekBar greenSeekBar;
     private SeekBar blueSeekBar;
+
+    private static boolean block_start_asyntask = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +85,6 @@ public class ChangeColorBalanceActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.i("XXX", "onActivityResult");
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && data != null) {
             Uri selectedImage = data.getData();
             String[] filePathColumn = { MediaStore.Images.Media.DATA };
@@ -96,18 +102,28 @@ public class ChangeColorBalanceActivity extends Activity {
                     int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                     imageSourcePath = cursor.getString(columnIndex);
                     imagePathTextView.setText(imageSourcePath);
+                    image.setVisibility(View.VISIBLE);
                     image.setImageURI(Uri.parse(imageSourcePath));
                     changeColorBalanceButton.setClickable(true);
                 }
             } finally {
                 cursor.close();
             }
-
         }
     }
 
     private void handlerChangeBalanceButton() {
+        if (block_start_asyntask){
+            Toast.makeText(this,"Wait...",Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         AsyncTask<Float,Void,Void> changeColorBalanceTask = new AsyncTask<Float, Void, Void>() {
+            @Override
+            protected void onPreExecute() {
+                block_start_asyntask = true;
+            }
+
             @Override
             protected Void doInBackground(Float... args) {
                 NativeUtils.changeColorBalance(
@@ -122,10 +138,13 @@ public class ChangeColorBalanceActivity extends Activity {
 
             @Override
             protected void onPostExecute(Void aVoid) {
+                image.setVisibility(View.VISIBLE);
                 image.setImageBitmap(BitmapFactory.decodeFile(imageResultPath));
                 System.gc();
                 Log.i("XXX","Render OK:" + imageResultPath);
                 Toast.makeText(ChangeColorBalanceActivity.this,"Render OK",Toast.LENGTH_SHORT).show();
+                SystemClock.sleep(150); // for write on sdcard
+                block_start_asyntask = false;
             }
         };
 

@@ -11,7 +11,7 @@ LOCAL_SRC_FILES := libpng.a
 include $(PREBUILT_STATIC_LIBRARY)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := ImageProcessing
+LOCAL_MODULE := libimageprocessing
 LOCAL_SRC_FILES := ImageProcessing.cpp
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)
